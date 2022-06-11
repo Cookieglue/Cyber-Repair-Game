@@ -10,10 +10,7 @@ public class SimonSays : MonoBehaviour
     [SerializeField] private int rows;
     [SerializeField] private int columns;
     [SerializeField] private GameObject gameButtonPrefab;
-    [SerializeField] private List<ButtonSettings> buttonSettings;
-    [SerializeField] int numberOfButtons = 9;
-    [SerializeField] int buttonRows = 3;
-    [SerializeField] int buttonColumns = 3;
+    public List<ButtonSettings> buttonSettings;
     [SerializeField] Transform gameFieldTransform;
 
     private List<GameObject> gameButtons;
@@ -28,7 +25,7 @@ public class SimonSays : MonoBehaviour
     void Start()
     {
         gameButtons = new List<GameObject>();
-        CreateButton()
+        CreateButtonGrid();
     }
 
     private void CreateButton(int i, Vector3 pos)
@@ -49,10 +46,17 @@ public class SimonSays : MonoBehaviour
 
     private void CreateButtonGrid()
     {
-        for (int x = numberOfButtons; x >= 0; x--)
-        {
-            CreateButton(x, new Vector3(gameButtonPrefab.GetComponent<Image>().GetComponent<RectTransform>().rect.width,))
-        }
+        CreateButton(0, new Vector3(-gameButtonPrefab.GetComponent<Image>().GetComponent<RectTransform>().rect.width, gameButtonPrefab.GetComponent<Image>().GetComponent<RectTransform>().rect.width, -10));
+        CreateButton(1, new Vector3(0, gameButtonPrefab.GetComponent<Image>().GetComponent<RectTransform>().rect.width, -10));
+        CreateButton(2, new Vector3(gameButtonPrefab.GetComponent<Image>().GetComponent<RectTransform>().rect.width, gameButtonPrefab.GetComponent<Image>().GetComponent<RectTransform>().rect.width, -10));
+
+        CreateButton(3, new Vector3(-gameButtonPrefab.GetComponent<Image>().GetComponent<RectTransform>().rect.width, 0, -10));
+        CreateButton(4, new Vector3(0, 0, -10));
+        CreateButton(5, new Vector3(gameButtonPrefab.GetComponent<Image>().GetComponent<RectTransform>().rect.width, 0, -10));
+
+        CreateButton(6, new Vector3(-gameButtonPrefab.GetComponent<Image>().GetComponent<RectTransform>().rect.width, -gameButtonPrefab.GetComponent<Image>().GetComponent<RectTransform>().rect.width, -10));
+        CreateButton(7, new Vector3(0, -gameButtonPrefab.GetComponent<Image>().GetComponent<RectTransform>().rect.width, -10));
+        CreateButton(8, new Vector3(gameButtonPrefab.GetComponent<Image>().GetComponent<RectTransform>().rect.width, -gameButtonPrefab.GetComponent<Image>().GetComponent<RectTransform>().rect.width, -10));
     }
 
     // Update is called once per frame

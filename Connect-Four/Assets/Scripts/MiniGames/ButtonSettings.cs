@@ -1,9 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 //used as a list for button settings
-[SerializeField]
+[Serializable]
 public class ButtonSettings
 {
     public Color baseColor;
