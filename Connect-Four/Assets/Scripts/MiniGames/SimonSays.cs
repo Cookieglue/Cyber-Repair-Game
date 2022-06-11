@@ -11,6 +11,7 @@ public class SimonSays : MonoBehaviour
     [SerializeField] private int columns;
     [SerializeField] private GameObject gameButtonPrefab;
     public List<ButtonSettings> buttonSettings;
+    [SerializeField] AudioClip[] buttonBeeps;
     [SerializeField] Transform gameFieldTransform;
 
     private List<GameObject> gameButtons;
@@ -40,7 +41,7 @@ public class SimonSays : MonoBehaviour
         {
             //add on button click code here
         });
-
+        
         gameButtons.Add(button);
     }
 
@@ -59,6 +60,11 @@ public class SimonSays : MonoBehaviour
         CreateButton(8, new Vector3(gameButtonPrefab.GetComponent<Image>().GetComponent<RectTransform>().rect.width, -gameButtonPrefab.GetComponent<Image>().GetComponent<RectTransform>().rect.width, -10));
     }
 
+    void PlayAudio(int i)
+    {
+        AudioSource.PlayClipAtPoint(buttonBeeps[i], Camera.main.transform.position);
+    }
+    
     // Update is called once per frame
     void Update()
     {
