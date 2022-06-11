@@ -15,11 +15,13 @@ public class ShopCameraControl : MonoBehaviour
 
     void Update()
     {
+        // If mouse is within left screen buffer move left by scroll speed * delta
         if (Input.mousePosition.x / Screen.width < scrollBuffer) {
 
             scrollX -= scrollSpeed* Time.deltaTime;
 
         }
+        // If mouse is within right screen buffer move left by scroll speed * delta
         else if (Input.mousePosition.x / Screen.width > 1 - scrollBuffer)
         {
 
