@@ -9,6 +9,5 @@ public class ButtonSettings
 {
     public Color baseColor;
     public Color highlightColor;
-    public float fontSize = 20;
-    public int squareDimensions = 64;
+    public int fontSize = 10;
 }
