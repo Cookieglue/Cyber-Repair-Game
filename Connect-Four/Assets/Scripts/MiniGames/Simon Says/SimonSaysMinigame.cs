@@ -26,7 +26,6 @@ public class SimonSaysMinigame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -69,13 +68,13 @@ public class SimonSaysMinigame : MonoBehaviour
             passed = false;
             StartCoroutine(ColorBlink(red));
         }
-        if (buttonsClicked == level && passed && buttonsClicked != roundsPerGame)
+        if (buttonsClicked == level && passed == true && buttonsClicked != roundsPerGame)
         {
             level++;
             passed = false;
             StartCoroutine(ColorOrder());
         }
-        if (buttonsClicked == level && passed && buttonsClicked == roundsPerGame)
+        if (buttonsClicked == level && passed == true && buttonsClicked == roundsPerGame)
         {
             Debug.Log("Failed");
             won = true;
