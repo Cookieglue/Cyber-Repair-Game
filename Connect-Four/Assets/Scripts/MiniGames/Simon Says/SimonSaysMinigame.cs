@@ -21,7 +21,7 @@ public class SimonSaysMinigame : MonoBehaviour
     Color32 green = new Color32(4, 204, 0, 255);
     Color32 invisible = new Color32(4, 204, 0, 0);
     Color32 white = new Color32(255, 255, 255, 255);
-    public float lightSpeed;
+    public float lightSpeed = 0.5f;
 
     // Start is called before the first frame update
     void Start()
