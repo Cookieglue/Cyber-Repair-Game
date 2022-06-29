@@ -28,11 +28,13 @@ public class WireNode : MonoBehaviour
         if (wiresController.currentWire == 0) {
 
             wiresController.currentWire = order;
+            wiresController.UpdateLine(column,order, transform.position);
 
         }
         else if (wiresController.currentWire == order && column == wiresController.currentColumn+1) {
 
             completed = true;
+            wiresController.UpdateLine(column, order, transform.position);
             if (column == 3) {
 
                 //reset wires so you can do another color
