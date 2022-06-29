@@ -18,6 +18,8 @@ public class ButtonGeneration : MonoBehaviour
     public int currentWire;
     public int currentColumn = 0;
 
+    [SerializeField] private Camera camera;
+
     void Start()
     {
 
@@ -43,7 +45,11 @@ public class ButtonGeneration : MonoBehaviour
     }
     public void UpdateLine(int column, int wireColor, Vector3 position) {
 
-        lines[wireColor - 1].SetPosition(column - 1, position);
+        print(wireColor - 1);
+        print(column - 1);
+        Vector3 linePos = camera.ScreenToWorldPoint(position);
+        linePos = new Vector3(linePos.x, linePos.y, -0.1f);
+        lines[wireColor - 1].SetPosition(column - 1, linePos);
 
     }
     public void CheckCompletion()

@@ -28,12 +28,14 @@ public class WireNode : MonoBehaviour
         if (wiresController.currentWire == 0) {
 
             wiresController.currentWire = order;
+            wiresController.currentColumn = column;
             wiresController.UpdateLine(column,order, transform.position);
 
         }
         else if (wiresController.currentWire == order && column == wiresController.currentColumn+1) {
 
             completed = true;
+            wiresController.currentColumn = column;
             wiresController.UpdateLine(column, order, transform.position);
             if (column == 3) {
 
