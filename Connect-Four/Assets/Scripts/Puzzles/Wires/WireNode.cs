@@ -25,8 +25,9 @@ public class WireNode : MonoBehaviour
     }
     void CheckWires() {
 
-        if (wiresController.currentWire == 0) {
+        if (wiresController.currentWire == 0 && wiresController.currentColumn == 0) {
 
+            completed = true;
             wiresController.currentWire = order;
             wiresController.currentColumn = column;
             wiresController.UpdateLine(column,order, transform.position);
@@ -46,6 +47,7 @@ public class WireNode : MonoBehaviour
             }
 
         }
+        wiresController.CheckCompletion();
 
     }
 }

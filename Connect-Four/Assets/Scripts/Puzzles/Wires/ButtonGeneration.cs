@@ -45,8 +45,6 @@ public class ButtonGeneration : MonoBehaviour
     }
     public void UpdateLine(int column, int wireColor, Vector3 position) {
 
-        print(wireColor - 1);
-        print(column - 1);
         Vector3 linePos = camera.ScreenToWorldPoint(position);
         linePos = new Vector3(linePos.x, linePos.y, -0.1f);
         lines[wireColor - 1].SetPosition(column - 1, linePos);
