@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class ButtonGeneration : MonoBehaviour
 {
+    [SerializeField] private LineRenderer[] lines;
+
     [SerializeField] private GameObject[] start;
     [SerializeField] private GameObject[] medium;
     [SerializeField] private GameObject[] end;
@@ -14,7 +16,7 @@ public class ButtonGeneration : MonoBehaviour
     [SerializeField] private Color[] colors= new Color[]{Color.red, Color.green, Color.blue};
 
     public int currentWire;
-
+    public int currentColumn = 0;
 
     void Start()
     {
@@ -23,6 +25,7 @@ public class ButtonGeneration : MonoBehaviour
 
         for (int i = 0; i <= conglomerate.Length; i ++) {
 
+            lines[i].positionCount = 3;
             int colorNum = 0;
 
             while(conglomerate[i].Count > 0) {
@@ -30,12 +33,18 @@ public class ButtonGeneration : MonoBehaviour
                 int index = Random.Range(0, conglomerate[i].Count);
                 conglomerate[i][index].GetComponent<Image>().color = colors[colorNum];
                 conglomerate[i][index].GetComponent<WireNode>().order = colorNum + 1;
+                conglomerate[i][index].GetComponent<WireNode>().column = i + 1;
                 conglomerate[i].RemoveAt(index);
                 colorNum++;
 
             }
 
         }
+    }
+    public void UpdateLine(int column, int wireColor, Vector3 position) {
+
+        lines[wireColor - 1].SetPosition(column - 1, position);
+
     }
     public void CheckCompletion()
     {
