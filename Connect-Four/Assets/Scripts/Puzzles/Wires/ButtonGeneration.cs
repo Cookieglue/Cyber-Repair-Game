@@ -13,6 +13,8 @@ public class ButtonGeneration : MonoBehaviour
 
     [SerializeField] private Color[] colors= new Color[]{Color.red, Color.green, Color.blue};
 
+    public int currentWire;
+
 
     void Start()
     {
@@ -27,11 +29,36 @@ public class ButtonGeneration : MonoBehaviour
 
                 int index = Random.Range(0, conglomerate[i].Count);
                 conglomerate[i][index].GetComponent<Image>().color = colors[colorNum];
+                conglomerate[i][index].GetComponent<WireNode>().order = colorNum + 1;
                 conglomerate[i].RemoveAt(index);
                 colorNum++;
 
             }
 
         }
+    }
+    public void CheckCompletion()
+    {
+
+        foreach (GameObject gameObject in start) {
+
+            if (gameObject.GetComponent<WireNode>().completed == false) return;
+
+        }
+        foreach (GameObject gameObject in medium)
+        {
+
+            if (gameObject.GetComponent<WireNode>().completed == false) return;
+
+        }
+        foreach (GameObject gameObject in end)
+        {
+
+            if (gameObject.GetComponent<WireNode>().completed == false) return;
+
+        }
+
+        print("All done!");
+
     }
 }
