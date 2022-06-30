@@ -25,9 +25,10 @@ public class ButtonGeneration : MonoBehaviour
 
         List<GameObject>[] conglomerate = new List<GameObject>[] { start.ToList(), medium.ToList(), end.ToList() };
 
+
         for (int i = 0; i <= conglomerate.Length; i ++) {
 
-            lines[i].positionCount = 3;
+            lines[i].positionCount = 0;
             int colorNum = 0;
 
             while(conglomerate[i].Count > 0) {
@@ -45,6 +46,7 @@ public class ButtonGeneration : MonoBehaviour
     }
     public void UpdateLine(int column, int wireColor, Vector3 position) {
 
+        lines[wireColor - 1].positionCount++;
         Vector3 linePos = camera.ScreenToWorldPoint(position);
         linePos = new Vector3(linePos.x, linePos.y, -0.1f);
         lines[wireColor - 1].SetPosition(column - 1, linePos);

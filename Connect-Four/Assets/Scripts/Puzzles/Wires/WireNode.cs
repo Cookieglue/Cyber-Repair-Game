@@ -22,10 +22,11 @@ public class WireNode : MonoBehaviour
 
         Button btn = gameObject.GetComponent<Button>();
         btn.onClick.AddListener(CheckWires);
+
     }
     void CheckWires() {
 
-        if (wiresController.currentWire == 0 && wiresController.currentColumn == 0) {
+        if (wiresController.currentWire == 0 && column == 1) {
 
             completed = true;
             wiresController.currentWire = order;
@@ -33,7 +34,7 @@ public class WireNode : MonoBehaviour
             wiresController.UpdateLine(column,order, transform.position);
 
         }
-        else if (wiresController.currentWire == order && column == wiresController.currentColumn+1) {
+        else if (wiresController.currentWire == order && wiresController.currentColumn + 1 == column) {
 
             completed = true;
             wiresController.currentColumn = column;
