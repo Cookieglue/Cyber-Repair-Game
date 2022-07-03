@@ -313,7 +313,7 @@ RectTransform:
   m_GameObject: {fileID: 644171351}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4.782388, y: 4.782388, z: 4.782388}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1628840717}
   m_RootOrder: 0
@@ -555,6 +555,10 @@ MonoBehaviour:
   node: {fileID: 644171351}
   cam: {fileID: 2079336903}
   canvas: {fileID: 1628840713}
+  images:
+  - {fileID: 21300000, guid: 9e730835b38275b43815ddfb05ebfd08, type: 3}
+  - {fileID: 21300000, guid: 4382b24cd7d1e6f448ee358d5f0ee339, type: 3}
+  - {fileID: 21300000, guid: 372039b888da0ab4d926e2e17f283b54, type: 3}
 --- !u!4 &1930319940
 Transform:
   m_ObjectHideFlags: 0
