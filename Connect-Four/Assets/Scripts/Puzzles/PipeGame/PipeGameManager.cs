@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PipeGameManager : MonoBehaviour
 {
@@ -8,15 +9,18 @@ public class PipeGameManager : MonoBehaviour
 
     [SerializeField] private GameObject node;
     [SerializeField] private Camera cam;
+    [SerializeField] private GameObject canvas;
     void Start()
     {
 
         for (int x = 0; x < gameSize; x++) {
 
-            for (int y = 0; y < gameSize; y++) {
+            for (int y = gameSize; y > 0; y--) {
 
-                Vector2 nodePos = cam.ScreenToWorldPoint( new Vector3(x * Screen.width/gameSize,y * Screen.height / gameSize) );
-                Instantiate(node, nodePos, Quaternion.identity);
+                Vector2 nodePos = new Vector2(Screen.height/(gameSize) * x + Screen.width/2 - Screen.height/2, Screen.height/(gameSize) * y) ;
+                GameObject nodeGameobject = Instantiate(node, Vector3.zero, Quaternion.identity) as GameObject;
+                nodeGameobject.transform.SetParent(canvas.transform);
+                nodeGameobject.transform.position = nodePos;
 
             }
 
