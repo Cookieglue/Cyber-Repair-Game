@@ -35,10 +35,9 @@ public class PipeNode : MonoBehaviour
 
     }
 
-    void RotateRandom() {
+    public void RotateAmount(int rand) {
 
-        int rand = Random.Range(0,3);
-
+        transform.Rotate(new Vector3(0, 0, 90 * rand));
         string[] tempList = new string[4];
 
         for(int i = 0; i < sides.Length; i ++) {
