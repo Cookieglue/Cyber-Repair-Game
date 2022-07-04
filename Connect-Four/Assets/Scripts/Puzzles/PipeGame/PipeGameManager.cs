@@ -21,15 +21,15 @@ public class PipeGameManager : MonoBehaviour
 
     private GameObject[,] nodeRefrences = new GameObject[gameSize, gameSize];
 
-    private Dictionary<int, int[]> moveIndex;
+    private Dictionary<int, int[]> moveIndex = new Dictionary<int, int[]>();
     private int[] generationPos = new int[2];
 
     void Start()
     {
-        moveIndex.Add(0, new int[] { 0, 1 });
-        moveIndex.Add(1, new int[] { 1, 0 });
-        moveIndex.Add(2, new int[] { 0, -1 });
-        moveIndex.Add(3, new int[] { -1, 0 });
+        moveIndex.Add(0, new int[2] { 0, 1 });
+        moveIndex.Add(1, new int[2] { 1, 0 });
+        moveIndex.Add(2, new int[2] { 0, -1 });
+        moveIndex.Add(3, new int[2] { -1, 0 });
 
         for (int x = 0; x < gameSize; x++) {
 
@@ -93,6 +93,7 @@ public class PipeGameManager : MonoBehaviour
                 print(generationPos);
                 SetPipetype(nodeRefrences[generationPos[0], generationPos[1]], 0, 1);
                 IteratePath();
+                return;
 
             }
 
