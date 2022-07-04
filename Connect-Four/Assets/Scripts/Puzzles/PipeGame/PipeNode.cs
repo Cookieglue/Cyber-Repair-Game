@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PipeNode : MonoBehaviour
 {
@@ -8,24 +9,29 @@ public class PipeNode : MonoBehaviour
     public string[] sides = {"superpos", "superpos", "superpos", "superpos" };
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Button btn = gameObject.GetComponent<Button>();
+        btn.onClick.AddListener(RotateOnClick);
     }
 
     void RotateOnClick() {
 
-        string temp = sides[sides.Length];
-        for (int i = sides.Length; i > 0; i--) {
+        transform.Rotate(new Vector3(0,0,90));
 
-            sides[i] = sides[i - 1];
+        string[] tempList = new string[4];
+
+        for (int i = 0; i < sides.Length; i++)
+        {
+
+            tempList[i] = sides[i];
 
         }
-        sides[0] = temp;
+
+        for (int i = 0; i < sides.Length; i++)
+        {
+
+            sides[i] = tempList[(i + 1) % 4];
+
+        }
 
     }
 

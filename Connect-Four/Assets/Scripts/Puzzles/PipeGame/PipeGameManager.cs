@@ -32,7 +32,9 @@ public class PipeGameManager : MonoBehaviour
                 //transform initialization
                 nodeGameobject.transform.SetParent(canvas.transform);
                 nodeGameobject.transform.position = nodePos;
-                nodeGameobject.GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.height / (gameSize), Screen.height / (gameSize) );
+                int nodeSize = Screen.height / gameSize;
+                nodeGameobject.GetComponent<RectTransform>().sizeDelta = new Vector2(nodeSize, nodeSize );
+                nodeGameobject.transform.Translate(new Vector2(nodeSize/2,-nodeSize/2));
 
                 //rotation initialization
                 int rand = Random.Range(0, 2);
